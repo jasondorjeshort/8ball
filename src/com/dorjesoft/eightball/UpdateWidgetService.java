@@ -1,14 +1,11 @@
 package com.dorjesoft.eightball;
 
-import java.util.Random;
-
 import android.app.PendingIntent;
 import android.app.Service;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Handler;
 import android.os.IBinder;
 import android.text.ClipboardManager;
@@ -16,21 +13,7 @@ import android.widget.RemoteViews;
 
 public class UpdateWidgetService extends Service {
 
-	protected Random rand = new Random();
-
 	static public final String EXTRAS_TYPE = "8BALL_UPDATE_TYPE"; //$NON-NLS-1$
-
-	public String getEightBall() {
-		Resources res = getResources();
-		String[][] choices = { res.getStringArray(R.array.eightball_yes),
-				res.getStringArray(R.array.eightball_maybe),
-				res.getStringArray(R.array.eightball_no) };
-
-		int i = Math.abs(rand.nextInt()) % choices.length;
-		int j = Math.abs(rand.nextInt()) % choices[i].length;
-
-		return choices[i][j];
-	}
 
 	Handler mHandler;
 
@@ -69,7 +52,7 @@ public class UpdateWidgetService extends Service {
 		String eb = getString(R.string.eightball_init);
 
 		if (new8ball) {
-			eb = getEightBall();
+			eb = EightBall.getEightBall(this);
 			ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
 			clipboard.setText(eb);
 		}
