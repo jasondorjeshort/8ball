@@ -12,9 +12,8 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
         <receiver
-            android:name=".WidgetProvider"
+            android:name="com.dorjesoft.eightball.WidgetProvider"
             android:icon="@drawable/ic_launcher"
             android:label="Magic 8 Ball" >
             <intent-filter>
@@ -26,7 +25,7 @@
                 android:resource="@xml/widget_info" />
         </receiver>
 
-        <service android:name=".UpdateWidgetService" >
+        <service android:name="com.dorjesoft.eightball.UpdateWidgetService" >
         </service>
     </application>
 
