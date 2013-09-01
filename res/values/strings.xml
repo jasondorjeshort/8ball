@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name">Magic 8ball Widget</string>
-    <string name="eightball_init">(click for 8ball)</string>
+    <string name="eightball_init">(tap for 8ball)</string>
 
     <string-array name="eightball_yes">
         <item>It is certain</item>
